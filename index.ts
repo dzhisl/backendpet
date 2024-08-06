@@ -28,7 +28,7 @@ app.post("/balance", async (req, res) => {
   console.log(walletAddress, amount);
   let base64EncodedTransaction = await buildTransferTransaction(
     connection,
-    amount * LAMPORTS_PER_SOL,
+    amount,
     receiverPublickKey,
     new PublicKey(walletAddress)
   );

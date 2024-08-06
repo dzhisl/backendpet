@@ -27,7 +27,7 @@ app.post("/balance", (req, res) => __awaiter(void 0, void 0, void 0, function* (
     let walletAddress = body.account;
     let amount = body.amount;
     console.log(walletAddress, amount);
-    let base64EncodedTransaction = yield (0, utils_1.buildTransferTransaction)(config_1.connection, amount * web3_js_1.LAMPORTS_PER_SOL, config_1.receiverPublickKey, new web3_js_1.PublicKey(walletAddress));
+    let base64EncodedTransaction = yield (0, utils_1.buildTransferTransaction)(config_1.connection, amount, config_1.receiverPublickKey, new web3_js_1.PublicKey(walletAddress));
     res.status(201).json({
         message: `Deserialize, sign and send this transaction to transfer ${amount} from ${walletAddress} to ${config_1.receiverPublickKey.toString()}`,
         base64EncodedTransaction: base64EncodedTransaction,
