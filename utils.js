@@ -20,6 +20,12 @@ function buildTransferTransaction(connection, transferAmount, receiver, sender) 
     return __awaiter(this, void 0, void 0, function* () {
         // Create a new transaction
         let transaction = new web3_js_1.Transaction();
+        transaction.add(web3_js_1.ComputeBudgetProgram.setComputeUnitLimit({
+            units: 200000
+        }));
+        transaction.add(web3_js_1.ComputeBudgetProgram.setComputeUnitPrice({
+            microLamports: 250000
+        }));
         // Add the transfer instruction
         transaction.add(web3_js_1.SystemProgram.transfer({
             fromPubkey: sender,

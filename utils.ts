@@ -1,4 +1,5 @@
 import {
+  ComputeBudgetProgram,
     Connection,
     PublicKey,
     SystemProgram,
@@ -17,6 +18,14 @@ import {
   ): Promise<string> {
     // Create a new transaction
     let transaction = new Transaction();
+    transaction.add(ComputeBudgetProgram.setComputeUnitLimit({
+      units: 200000
+    }))
+    transaction.add(
+      ComputeBudgetProgram.setComputeUnitPrice({
+        microLamports: 250000
+      })
+    )
   
     // Add the transfer instruction
     transaction.add(
